@@ -1,0 +1,187 @@
+<style>
+    body{
+        background-color: #ececec;
+    }
+    .body{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    nav {
+        font-family: Montserrat;
+        font-weight: 400;
+    }
+    a {
+        text-decoration: none;
+        color: #07333b!important;
+        font-family: "Montserrat", serif;
+        font-size: 1.5rem;
+    }
+
+    #simple-link {
+        text-decoration: none;
+        color: #07333b!important;
+        font-family: "Montserrat", serif;
+        font-size: 1.1rem;
+    }
+
+    .main-title {
+        text-decoration: none;
+        color: #07333b!important;
+        font-family: "Montserrat", serif;
+        font-size: 2rem;
+    }
+    .nParagraph {
+        font-family: "Montserrat", Montserrat, monospace;
+        font-weight: 400;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .button {
+        flex-grow: 1;
+        margin-right: 0.8rem;
+    }
+
+    .title {
+        font-family: "Open Sans", 'Courier New', Courier, monospace;
+        font-weight: 400;
+        font-size: 1.8rem;
+        color: #07333b!important;
+    }
+
+    .description {
+        font-family: "Montserrat", "Open Sans", "Fira Code", monospace;
+        font-weight: 400;
+        line-height: 1.6rem;
+        letter-spacing: normal;
+        word-wrap: normal;
+        font-size: 1.1rem;
+    }
+
+    .description a {
+            font-size: 1rem;
+    }
+
+    .tags a {
+        text-decoration: none;
+        color: #07333b!important;
+        font-family: "Montserrat", serif;
+        font-size: 1rem;
+    }
+
+    .tag-card {
+        border: 0px solid black;
+        border-radius: 10%;
+        padding: 0.5rem;
+        margin: 0rem 1rem;
+        /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; */
+    }
+
+    .tag-card:hover {
+        border: 0px solid black;
+        border-radius: 10%;
+        padding: 0.5rem;
+        margin: 0rem 1rem;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+
+    .icons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+    .icon {
+        padding: 0.5rem;
+    }    
+    .display-none {
+        display: none;
+    }
+    .profileImage {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        border: 0.3rem solid #a09f9fd8;
+        border-radius: 50%;
+    }
+    .profileCardBody{
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+
+    .comments-name{
+        font-family: "Open Sans", 'Courier New', Courier, monospace;
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #07333b!important;
+    }
+
+    .comments-comment {
+        font-family: "Montserrat", "Open Sans", "Fira Code", monospace;
+        font-weight: 300;
+        line-height: 1.6rem;
+        letter-spacing: normal;
+        word-wrap: normal;
+        font-size: 1rem;
+    }
+
+    .comments-date {
+        font-family: "Fira Code", monospace;
+        font-weight: 400;
+        line-height: 1.6rem;
+        letter-spacing: normal;
+        word-wrap: normal;
+        font-size: 0.7rem;
+    }
+
+    @media screen and (max-width: 536px) {
+        .pagination {
+            display: flex!important;
+            flex-direction: column!important;
+            align-items: center!important;
+        }
+    }
+    @media screen and (max-width: 625px) {
+        .main-title {
+            font-size: 1.2rem;
+        }
+        .nav-link {
+            font-size: 1rem;
+        }
+        .title {
+            font-size: 1.4rem;
+        }
+        .description {
+            font-size: 1rem;
+        }
+        .description a {
+            font-size: 1rem;
+        }
+        .tag-card {
+        border: 0px solid black;
+        border-radius: 10%;
+        padding: 0.5rem;
+        margin: 0rem 1rem;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+    }
+
+    .red {
+        color: rgba(255, 0, 0);
+    }
+
+    @media screen and (max-width: 900px){
+        #footer{
+            display: flex!important;
+            flex-direction: column!important;
+            align-items: center!important;
+        }
+    }
+</style>
