@@ -22,7 +22,7 @@
             }
 
             try {
-                const res = await fetch('/search/articles', {
+                const res = await fetch('/user/search', {
                     method: 'POST',
                     body: JSON.stringify({
                         search: form.searchArticle.value
@@ -39,7 +39,7 @@
                     div.append(hr);
                     const a = document.createElement('a');
                     h2.append(a);
-                    a.setAttribute('href', `/articles/${articles[index]._id}`);
+                    a.setAttribute('href', `/user/${articles[index]._id}`);
                     a.append(`${articles[index].title}`)
                     section.append(div);
                 }

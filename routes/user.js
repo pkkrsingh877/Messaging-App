@@ -1,24 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const { login, signup } = require('../controllers/authController');
-const { search } = require('../controllers/homeController');
+const { getLogin, postLogin, getSignup, postSignup } = require('../controllers/authController');
+const { getSearch, postSearch } = require('../controllers/homeController');
+const { getUsers } = require('../controllers/userController');
 
-router.post('/search', search);
+router.get('/', getUsers);
 
-router.get('/search', (req, res) => {
-    res.render('home/search');
-});
+router.post('/search', postSearch);
 
-router.post('/login', login);
+router.get('/search', getSearch);
 
-router.get('/login', (req, res) => {
-    res.render('auth/login');
-});
+router.post('/login', postLogin);
 
-router.post('/signup', signup);
+router.get('/login', getLogin);
 
-router.get('/signup', (req, res) => {
-    res.render('auth/signup');
-});
+router.post('/signup', postSignup);
+
+router.get('/signup', getSignup);
 
 module.exports = router;
