@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { getLogin, postLogin, getSignup, postSignup } = require('../controllers/authController');
 const { getSearch, postSearch } = require('../controllers/homeController');
-const { getUsers } = require('../controllers/userController');
-
-router.get('/', getUsers);
 
 router.post('/search', postSearch);
 

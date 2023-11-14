@@ -9,9 +9,15 @@ const getSearch = (req, res) => {
     }
 }
 
+// If user has send empty string then print all users
 const postSearch = async (req, res) => {
     try {
-        const users = await User.find({});
+        const { username } = req.body;
+        if(username){
+            const users = await User.find({ username: username });
+        }else{
+            const users = await User.find({});
+        }
         res.status(200).json(users);
     } catch (error) {
         console.log(error);
