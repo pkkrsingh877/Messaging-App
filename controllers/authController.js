@@ -23,12 +23,18 @@ const getLogin = (req, res) => {
 }
 
 const postLogin = async (req, res) => {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if( user.password == password ){
-        res.send('User Authenticated');
-    }else{
-        res.send('Incorrect Username/Password');
+    try {
+        const { username, password } = req.body;
+        console.log(req.body);
+        const user = await User.findOne({ username });
+        if (user.password === password) {
+            res.json({ id: user._id });
+        } else {
+            res.json({ error: 'Incorrect Username/Password' });
+        }
+    } catch (error) {
+        console.log(error);
+        res.send(error);
     }
 }
 

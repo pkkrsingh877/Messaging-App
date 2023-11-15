@@ -43,16 +43,8 @@
                 });
                 const response = await res.json();
                 console.log(response);
-                if(response.loginError){                  
-                    if(response.loginError.username){
-                        username.textContent = response.loginError.username
-                    }
-                    if(response.loginError.password){
-                        password.textContent = response.loginError.password
-                    }
-                }
-                if(response.user){
-                    location.assign(`/`);
+                if(response.id){
+                    location.assign(`http://localhost:8000/user/${response.id}`);
                 }
             } catch (err) {
                 console.log(err);
