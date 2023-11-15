@@ -11,7 +11,11 @@ const getSignup = (req, res) => {
 const postSignup = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.create({ username, password });
-    res.send(user);
+    if (user.password === password) {
+        res.json({ id: user._id });
+    } else {
+        res.json({ error: 'Incorrect Username/Password' });
+    }
 }
 
 const getLogin = (req, res) => {

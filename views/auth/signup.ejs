@@ -41,17 +41,9 @@
                     }),
                     headers: { 'Content-Type': 'application/json' }
                 });
-                const data = await res.json();
-                if(data.signupError){                  
-                    if(data.signupError.username){
-                        username.textContent = data.signupError.username
-                    }
-                    if(data.signupError.password){
-                        password.textContent = data.signupError.password
-                    }
-                }
-                if(data.data){
-                    location.assign(`/`);
+                const response = await res.json();
+                if(response.id){
+                    location.assign(`http://localhost:8000/user/${response.id}`);
                 }
             } catch (err) {
                 console.log(err);
