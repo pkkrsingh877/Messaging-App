@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt');
 const userSchema = mongoose.Schema({
     username: {
         type: String,
-        unique: [true, 'Username must be unique!']
+        unique: [true, 'Username must be unique!'],
+        required: [true, 'Username is required!']
     },
     password: {
         type: String,
-        min: [8, 'Password must be of atleast 8 characters!']
+        minlength: [8, 'Password must be of atleast 8 characters!'],
+        required: [true, 'Password is required!']
     },
     friends: [{
         type: mongoose.Schema.Types.ObjectId
