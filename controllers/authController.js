@@ -17,7 +17,7 @@ a user with received username and hashed password. hashing is done in when we ar
 to create new user and User.pre function is called. That's when salt is generated and
 password is hashed. then we create token, sign it, send it to users browser. finally we
 send the user id to the users browser in json format
- */ 
+ */
 
 const postSignup = async (req, res) => {
     try {
@@ -28,7 +28,7 @@ const postSignup = async (req, res) => {
         res.cookie('jwt', token, { httpOnly: true });
         res.status(200).json({ userId: user._id });
     } catch (error) {
-        const signupError = signupErrorHandler(err);
+        const signupError = signupErrorHandler(error);
         res.status(400).json({ signupError });
     }
 }
@@ -55,8 +55,8 @@ const postLogin = async (req, res) => {
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' }); // 7 days
         res.cookie('jwt', token, { httpOnly: true });
         res.status(200).json({ userId: user._id });
-    } catch (err) {
-        const loginError = loginErrorHandler(err);
+    } catch (error) {
+        const loginError = loginErrorHandler(error);
         res.status(400).json({ loginError });
     }
 }
