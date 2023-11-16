@@ -9,6 +9,14 @@ const getSignup = (req, res) => {
     }
 }
 
+/*
+The postSignup function gets username and password from form submission and then we create
+a user with received username and hashed password. hashing is done in when we are trying 
+to create new user and User.pre function is called. That's when salt is generated and
+password is hashed. then we create token, sign it, send it to users browser. finally we
+send the user id to the users browser in json format
+ */ 
+
 const postSignup = async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -30,6 +38,13 @@ const getLogin = (req, res) => {
     }
 }
 
+/*
+postLogin function call User.login function on the mongoose schema itself and then 
+verifies if username and password is correct. then we create token using jwt and sign
+it with userid as payload and our secret code. then we send the token to the browser of
+person who is trying to login. Finally we send the userid of user to their browser in
+json format so we can use it to send them to profile page.
+*/
 const postLogin = async (req, res) => {
     const { username, password } = req.body;
     try {
