@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const loginErrorHandler = require('../functions/loginErrorHandler');
+const signupErrorHandler = require('../functions/signupErrorHandler');
 
 const getSignup = (req, res) => {
     try {
@@ -24,9 +26,10 @@ const postSignup = async (req, res) => {
         await User.login(username, password);
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' }); // 7 days
         res.cookie('jwt', token, { httpOnly: true });
-        res.status(200).json({ user: user._id });
+        res.status(200).json({ userId: user._id });
     } catch (error) {
-        console.log(error);
+        const signupError = signupErrorHandler(err);
+        res.status(400).json({ signupError });
     }
 }
 
@@ -51,7 +54,7 @@ const postLogin = async (req, res) => {
         const user = await User.login(username, password);
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' }); // 7 days
         res.cookie('jwt', token, { httpOnly: true });
-        res.status(200).json({ user: user._id });
+        res.status(200).json({ userId: user._id });
     } catch (err) {
         const loginError = loginErrorHandler(err);
         res.status(400).json({ loginError });

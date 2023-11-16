@@ -42,8 +42,8 @@
                     headers: { 'Content-Type': 'application/json' }
                 });
                 const response = await res.json();
-                if(response.id){
-                    location.assign(`http://localhost:8000/user/${response.id}`);
+                if(response.userId){
+                    location.assign(`http://localhost:8000/user/${response.userId}`);
                 }
             } catch (err) {
                 console.log(err);
