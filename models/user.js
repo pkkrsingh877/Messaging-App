@@ -20,6 +20,9 @@ const userSchema = mongoose.Schema({
     }],
     friendRequestReceived: [{
         type: mongoose.Schema.Types.ObjectId
+    }],
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId
     }]
 });
 
