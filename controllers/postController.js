@@ -10,10 +10,11 @@ const getPosts = async (req, res) => {
     }
 }
 
-const getPost = (req, res) => {
+const getPost = async (req, res) => {
     try {
         const { id } = req.params;
-        res.redirect(`http://localhost:8000/post/${id}`);
+        const post = await Post.findOne({ _id: id });
+        res.render(`posts/post`, { post });
     } catch (error) {
         console.log(error);
         res.status(400).json({"Status": "Failure"});
@@ -22,10 +23,12 @@ const getPost = (req, res) => {
 
 const postCreatePost = async (req, res) => {
     try {
-        const { title, description, comments } = req.body;
-        const post = await Post.create({ title, description, comments });
+        const { title, description } = req.body;
+        console.log(req.body);
+        const post = await Post.create({ title, description });
         res.redirect(`http://localhost:8000/post/${post._id}`);
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);   
     }
 }

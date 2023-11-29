@@ -12,7 +12,6 @@ const postSchema = mongoose.Schema({
     },
     comments: [{
         type: String,
-        required: [true, "Comment is required!"],
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: User

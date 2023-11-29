@@ -1,13 +1,15 @@
 <% layout('/layouts/boilerplate') %>
 
+    <h2 class="display-2">Create Post</h2>
+
     <form action="http://localhost:8000/post" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Title: </label>
-            <input type="text" class="form-control" id="title" placeholder="title">
+            <input type="text" class="form-control" id="title" placeholder="title" name="title">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
-            <textarea class="form-control" id="description" placeholder="description"></textarea>
+            <textarea class="form-control" id="description" placeholder="description" name="description"></textarea>
         </div>
         <button type="submit" class="btn btn-success">Post</button>
     </form>
