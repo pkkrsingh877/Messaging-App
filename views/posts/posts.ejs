@@ -1,6 +1,6 @@
 <% layout('/layouts/boilerplate') %>
 
 <% for( let index = 0; index < posts.length; index++ ) { %>
-    <h3><%= posts[index].title %></h3>
+    <h2 class="display-2"><a href="/post/<%= posts[index]._id %>"><%= posts[index].title %></a></h2>
     <p><%= posts[index].description %></p>
 <% } %>
