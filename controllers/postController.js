@@ -41,7 +41,17 @@ const getCreatePost = (req, res) => {
     }
 }
 
-const updatePost = async (req, res) => {
+const getUpdatePost = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = await Post.findOne({ _id: id });
+        res.status(200).render('posts/update', { post });
+    } catch (error) {
+        res.status(400).json({ error });
+    }
+}
+
+const patchUpdatePost = async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, user, comments } = req.body;
@@ -66,4 +76,4 @@ const deletePost = async (req, res) => {
     }
 }
 
-module.exports = { getPosts, getPost, getCreatePost, postCreatePost, deletePost, updatePost };
+module.exports = { getPosts, getPost, getCreatePost, postCreatePost, deletePost, getUpdatePost, patchUpdatePost };

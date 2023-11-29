@@ -6,3 +6,5 @@
 <form action="/post/<%= post._id %>?_method=DELETE" method="POST" class="d-inline">
     <button class="btn btn-danger" type="submit">Delete</button>
 </form>
+
+<a href="/post/update/<%= post._id %>" class="btn btn-primary">Update</a>
