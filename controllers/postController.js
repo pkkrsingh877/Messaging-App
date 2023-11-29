@@ -60,7 +60,8 @@ const deletePost = async (req, res) => {
     try {
         const { id } = req.params;
         await Post.findByIdAndDelete(id);
-        res.status(200).json({ "Status": "Success" })
+        const posts =  await Post.find({});
+        res.status(200).render('posts/posts', { posts });
     } catch (error) {
         res.status(400).json(error);
     }
