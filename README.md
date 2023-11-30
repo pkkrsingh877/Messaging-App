@@ -25,3 +25,7 @@
 2. User should be able to update posts
 3. User should be able to delete posts
 4. User should be able to view posts
+5. User being able to update his username
+6. User being able to send friend request BACKEND
+7. User being able to accept friend request BACKEND
+8. User being able to reject friend request BACKEND
