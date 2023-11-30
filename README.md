@@ -15,6 +15,10 @@
 1. We need to make sure that user is logged in before allowing them to create, update, delete and view posts. 
 2. If they try to send requests via tools like postman then we need to make sure that they are sent a login page instead.
 
+## Major Issue
+
+1. Deal with cookie-parser middleware so that it does not break application
+
 ## Done
 
 1. User should be able to create posts
