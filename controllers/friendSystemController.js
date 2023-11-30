@@ -1,5 +1,16 @@
 const User = require('../models/user');
 
+const updateProfile = async (req, res) => {
+    try {
+        const { id, newUsername } = req.body;
+        const user = await User.findByIdAndUpdate(id, { username: newUsername });
+        res.status(200).json({ "status": "success" });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error);
+    }
+}
+
 const sendFriendRequest = async (req, res) => {
     try {
         const { senderId, receiverId } = req.body;
@@ -89,4 +100,4 @@ const rejectFriendRequest = async (req, res) => {
     }
 }
 
-module.exports = { sendFriendRequest, acceptFriendRequest, rejectFriendRequest };
+module.exports = { updateProfile, sendFriendRequest, acceptFriendRequest, rejectFriendRequest };
