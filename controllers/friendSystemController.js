@@ -66,4 +66,27 @@ const acceptFriendRequest = async (req, res) => {
     }
 }
 
+const rejectFriendRequest = async (req, res) => {
+    try {
+        const { receiverId, senderId } = req.body;
+        // remove receiver's id from sender's friends array
+        await User.findByIdAndUpdate(senderId, {
+            $pull: {
+                friendRequestSent: receiverId
+            }
+        });
+
+        // remove sender's id from receiver's friend array
+        await User.findByIdAndUpdate(receiverId, {
+            $pull: {
+                friendRequestReceived: senderId
+            }
+        });
+        res.status(200).json({ "status": "success" });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error);
+    }
+}
+
 module.exports = { sendFriendRequest, acceptFriendRequest, rejectFriendRequest };
