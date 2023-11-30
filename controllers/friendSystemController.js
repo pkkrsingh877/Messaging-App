@@ -24,8 +24,46 @@ const sendFriendRequest = async (req, res) => {
     }
 }
 
-const handleFriendRequest = async (req, res) => {
-    // Code for handling Friend Request
+/** If friend request is sent then we need to make sure the friends array of both sender and 
+ receiver is having each other's user.id **/
+
+/**  Also make sure that friendRequestSent array of sender and friendRequestReceived array
+ * of receiver does not have each other's user.id
+ **/
+const acceptFriendRequest = async (req, res) => {
+    try {
+        const { receiverId, senderId } = req.body;
+        // save receiver's id to sender's friends array
+        await User.findByIdAndUpdate(senderId, {
+            $push: {
+                friends: receiverId
+            }
+        });
+
+        // Save sender's id to receiver's friend array
+        await User.findByIdAndUpdate(receiverId, {
+            $push: {
+                friends: senderId
+            }
+        });
+
+        // save receiver's id to sender's friends array
+        await User.findByIdAndUpdate(senderId, {
+            $push: {
+                friendRequestSent: receiverId
+            }
+        });
+
+        // Save sender's id to receiver's friend array
+        await User.findByIdAndUpdate(receiverId, {
+            $pull: {
+                friendRequestReceived: senderId
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error);
+    }
 }
 
-module.exports = { sendFriendRequest, handleFriendRequest };
+module.exports = { sendFriendRequest, acceptFriendRequest, rejectFriendRequest };
