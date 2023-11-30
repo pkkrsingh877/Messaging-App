@@ -60,7 +60,7 @@ const patchUpdatePost = async (req, res) => {
             title, description, user, comments, updatedAt: Date.now()
         });
 
-        res.status(200).json({"Status": "Success"});
+        res.status(200).redirect(`/post/${id}`);
     } catch (error) {
         res.status(400).json(error);
     }
