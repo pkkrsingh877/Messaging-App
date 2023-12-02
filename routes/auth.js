@@ -10,6 +10,4 @@ router.post('/signup', postSignup);
 
 router.get('/signup', getSignup);
 
-router.get('/:id', getUser);
-
 module.exports = router;
