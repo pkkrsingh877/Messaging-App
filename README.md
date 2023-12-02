@@ -15,13 +15,6 @@
 1. We need to make sure that user is logged in before allowing them to create, update, delete and view posts. 
 2. If they try to send requests via tools like postman then we need to make sure that they are sent a login page instead.
 
-## Make authentication it's own thing
-
-1. Separate authentication routes from user routes => put login and signup in auth routes
-
-## Major Issue
-
-1. Deal with cookie-parser middleware so that it does not break application
 
 ## Done
 
@@ -33,3 +26,5 @@
 6. User being able to send friend request BACKEND
 7. User being able to accept friend request BACKEND
 8. User being able to reject friend request BACKEND
+9. Deal with cookie-parser middleware so that it does not break application
+10. Separate authentication routes from user routes => put login and signup in auth routes
