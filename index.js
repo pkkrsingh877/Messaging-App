@@ -23,6 +23,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Setup Routes
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
 const userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
 const postRoutes = require('./routes/post');

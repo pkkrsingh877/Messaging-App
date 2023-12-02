@@ -100,7 +100,7 @@ const rejectFriendRequest = async (req, res) => {
     }
 }
 
-const getFriendRequests = async () => {
+const getFriendRequests = async (req, res) => {
     try {
         const { id } = req.body;
         const requests = await User.findOne({ _id: id }).populate({
