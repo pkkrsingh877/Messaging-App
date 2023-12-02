@@ -20,7 +20,7 @@
     </form>
     <section class="description mt-3">
         Don't have an account?<br>
-    <a href="/user/signup" class="btn btn-secondary mt-1" style="color: white!important;">Signup</a>    
+    <a href="/auth/signup" class="btn btn-secondary mt-1" style="color: white!important;">Signup</a>    
     </section>
 
     <script>
@@ -33,7 +33,7 @@
             username.textContent = '';
             password.textContent = '';
             try {
-                const res = await fetch('/user/login', {
+                const res = await fetch('/auth/login', {
                     method: 'POST',
                     body: JSON.stringify({
                         username: form.username.value,
