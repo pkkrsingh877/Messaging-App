@@ -26,9 +26,9 @@ app.set('views', path.join(__dirname, 'views'));
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 const userRoutes = require('./routes/user');
-app.use('/user', userRoutes);
+app.use('/user', verifyUser, userRoutes);
 const postRoutes = require('./routes/post');
-app.use('/post', verifyUser, postRoutes); //have to use middleware to verify user
+app.use('/post', verifyUser, postRoutes);
 
 // Setup Mongodb
 const databaseSetup = async () => {
