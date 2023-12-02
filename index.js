@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
-// app.use(cookieParser);
+app.use(cookieParser());
 
 //setting up ejs
 app.engine('ejs', ejsMate);
