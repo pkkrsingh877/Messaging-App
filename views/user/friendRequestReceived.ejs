@@ -1,0 +1,17 @@
+<% layout('/layouts/boilerplate') %>
+
+    <h1 class="my-3">Friend Request Received</h1>
+
+    <% for(let index=0; index < users.length; index++){ %>
+        <section class="card shadow p-3 mb-3 bg-body rounded">
+            <h2 class="d-flex flex-row flex-wrap space-between">
+                <a href="/post/<%= users[index]._id %>" class="title">
+                    <%= users[index].username %>
+                </a>
+                <div class="d-flex flex-row space-between">
+                    <form action="/user/friendReqestAccept" method="post"></form>
+                    <button class="btn btn-danger">Reject</button>
+                </div>
+            </h2>
+        </section>
+        <% } %>
