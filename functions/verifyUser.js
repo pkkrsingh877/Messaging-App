@@ -4,12 +4,16 @@ require('dotenv').config();
 
 const verifyUser = async (req, res, next) => {
     try {
-        console.log(req);
+        // Get the token from cookies
         const token = req.cookies.jwt;
+
+        // If token exists then decode it and set req.user equals userid
         if(token){
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            console.log(decoded.id)
+            req.user = decoded.userId
         }
+
+        // Let the request continue by calling next() function
         next();
     } catch (error) {
         console.log(error);

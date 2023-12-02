@@ -28,7 +28,7 @@ app.use('/auth', authRoutes);
 const userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
 const postRoutes = require('./routes/post');
-app.use('/post', postRoutes); //have to use middleware to verify user
+app.use('/post', verifyUser, postRoutes); //have to use middleware to verify user
 
 // Setup Mongodb
 const databaseSetup = async () => {
