@@ -100,4 +100,21 @@ const rejectFriendRequest = async (req, res) => {
     }
 }
 
-module.exports = { updateProfile, sendFriendRequest, acceptFriendRequest, rejectFriendRequest };
+const getFriendRequests = async () => {
+    try {
+        const { id } = req.body;
+        const requests = await User.findOne({ _id: id }).populate({
+            path: 'friendReqestReceived',
+            populate: {
+                path: 'user',
+                model: 'User'
+            }
+        });
+        const users = requests.friendRequestReceived;
+        res.status(200).render('user/friendRequestReceived', { users });
+    } catch (error) {
+        res.status(400).json({ "error": error });
+    }
+}
+
+module.exports = { getFriendRequests, updateProfile, sendFriendRequest, acceptFriendRequest, rejectFriendRequest };
